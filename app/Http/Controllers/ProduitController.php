@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produit;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ProduitController extends Controller
 {
@@ -13,7 +15,8 @@ class ProduitController extends Controller
      */
     public function index()
     {
-        //
+        $produits=Produit::all();
+        return view('/',['produits'=>$produits,'layout'=>'index']);
     }
 
     /**
@@ -23,7 +26,8 @@ class ProduitController extends Controller
      */
     public function create()
     {
-        //
+        $produits=Produit::all();
+        return view('/',['produits'=>$produits,'layout'=>'create']);
     }
 
     /**
@@ -34,7 +38,15 @@ class ProduitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $produit=new Produit();
+        $produit->codeProd=$request->input('codeProd');
+        $produit->designation=$request->input('codesignation');
+        $produit->description=$request->input('description');
+        $produit->etat=$request->input('etat');
+        $produit->prix=$request->input('prix');
+
+        $produit->save();
+        return redirect('/');
     }
 
     /**
@@ -45,7 +57,9 @@ class ProduitController extends Controller
      */
     public function show($id)
     {
-        //
+        $produit=Produit::find($id);
+        $produits=Produit::all();
+        return view('produit',['produits'=>$produits,'produit'=>$produit,'layout'=>'show']);
     }
 
     /**
@@ -56,7 +70,9 @@ class ProduitController extends Controller
      */
     public function edit($id)
     {
-        //
+        $produit=Produit::find($id);
+        $produits=Produit::all();
+        return view('produit',['produits'=>$produits,'produit'=>$produit,'layout'=>'edit']);
     }
 
     /**
@@ -68,7 +84,15 @@ class ProduitController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $produit=Produit::find($id);
+        $produit->codeProd=$request->input('codeProd');
+        $produit->designation=$request->input('codesignation');
+        $produit->description=$request->input('description');
+        $produit->etat=$request->input('etat');
+        $produit->prix=$request->input('prix');
+
+        $produit->save();
+        return redirect('/');
     }
 
     /**
@@ -79,6 +103,8 @@ class ProduitController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $produit=Produit::find($id);
+        $produit->delete();
+        return redirect('/');
     }
 }
