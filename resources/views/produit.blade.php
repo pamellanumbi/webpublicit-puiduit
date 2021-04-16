@@ -14,25 +14,31 @@
     @if($layout=='index')
         <div class="container-fluid">
             <div class="row">
-                <section class="col">@include('produitList')</section>
-                <section class="col"></section>
+                <section>@include('produitList')</section>
+
             </div>
 
         </div>
     @elseif($layout=='create')
         <div class="container-fluid">
-            <section class="col">@include('produitList')</section>
-            <section class="col"></section>
+            <div class="row">
+                <section class="col">@include('produitList')</section>
+                <section class="col">@include('produitAjout')</section>
+            </div>
         </div>
     @elseif($layout=='show')
         <div class="container-fluid">
-            <section class="col">@include('produitList')</section>
-            <section class="col"></section>
+            <div class="row">
+                <section class="col">@include('produitList')</section>
+                <section class="col"></section>
+            </div>
         </div>
     @elseif($layout=='edit')
         <div class="container-fluid">
-            <section class="col">@include('produitList')</section>
-            <section class="col"></section>
+            <div class="row">
+                <section class="col">@include('produitList')</section>
+                <section class="col"></section>
+            </div>
         </div>
     @endif
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>

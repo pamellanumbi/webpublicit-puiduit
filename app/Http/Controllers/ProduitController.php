@@ -27,7 +27,7 @@ class ProduitController extends Controller
     public function create()
     {
         $produits=Produit::all();
-        return view('/',['produits'=>$produits,'layout'=>'create']);
+        return view('produit',['produits'=>$produits,'layout'=>'create']);
     }
 
     /**
@@ -38,11 +38,13 @@ class ProduitController extends Controller
      */
     public function store(Request $request)
     {
-       $produit=new Produit();
-        $produit->codeProd=$request->input('codeProd');
-        $produit->designation=$request->input('codesignation');
+        $cpt=Produit::all()->count();
+
+        $produit=new Produit();
+        $produit->codeProd="P000".($cpt+1);
+        $produit->designation=$request->input('designation');
         $produit->description=$request->input('description');
-        $produit->etat=$request->input('etat');
+        $produit->etat=1;
         $produit->prix=$request->input('prix');
 
         $produit->save();

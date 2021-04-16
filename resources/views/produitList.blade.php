@@ -6,7 +6,6 @@
             <th scope="col">Code</th>
             <th scope="col">Designation</th>
             <th scope="col">Description</th>
-            <th scope="col">Description</th>
             <th scope="col">PU</th>
             <th scope="col">Actions</th>
         </tr>
