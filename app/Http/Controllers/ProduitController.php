@@ -39,7 +39,13 @@ class ProduitController extends Controller
      */
     public function store(Request $request)
     {
-
+        $nomImage=null;
+        if (request()->has('image')){
+            $images=request()->file('image');
+            $nomImage=time().'.'.$images->getClientOriginalExtension();
+            $chemin=public_path('/images');
+            $images->move($chemin,$nomImage);
+        }
         $cpt=Produit::all()->count();
         $produit=new Produit();
         $produit->codeProd="P000".($cpt+1);
@@ -47,6 +53,7 @@ class ProduitController extends Controller
         $produit->description=$request->input('description');
         $produit->etat=1;
         $produit->prix=$request->input('prix');
+        $produit->image=$nomImage;
 
         $produit->save();
         return redirect('/create');
@@ -87,15 +94,25 @@ class ProduitController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $nomImage=null;
+
         $produit=Produit::find($id);
+        if (request()->has('image')){
+            $images=request()->file('image');
+            $nomImage=time().'.'.$images->getClientOriginalExtension();
+            $chemin=public_path('/images');
+            $images->move($chemin,$nomImage);
+            $produit->image=$nomImage;
+        }
+
         $produit->codeProd=$request->input('codeProd');
-        $produit->designation=$request->input('codesignation');
+        $produit->designation=$request->input('designation');
         $produit->description=$request->input('description');
         $produit->etat=$request->input('etat');
         $produit->prix=$request->input('prix');
 
         $produit->save();
-        return redirect('/');
+        return redirect('/index');
     }
 
     /**

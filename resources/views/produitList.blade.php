@@ -3,6 +3,7 @@
         <thead>
         <tr>
             <th scope="col">N°</th>
+            <th scope="col">Image</th>
             <th scope="col">Code</th>
             <th scope="col">Designation</th>
             <th scope="col">Description</th>
@@ -14,6 +15,7 @@
         @foreach($produits as $p)
         <tr>
             <th scope="row">{{ $p->id }}</th>
+            <td><img src="{{ asset('images/'.$p->image)  }}" alt="No Image" width="100px" height="100px"></td>
             <td>{{ $p->codeProd }}</td>
             <td>{{ $p->designation }}</td>
             <td>{{ $p->description }}</td>
