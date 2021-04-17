@@ -65,11 +65,10 @@ class ProduitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        $produit=Produit::find($id);
         $produits=Produit::all();
-        return view('produit',['produits'=>$produits,'produit'=>$produit,'layout'=>'show']);
+        return view('welcome',['produits'=>$produits]);
     }
 
     /**
