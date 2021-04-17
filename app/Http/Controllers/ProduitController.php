@@ -27,6 +27,7 @@ class ProduitController extends Controller
     public function create()
     {
         $produits=Produit::all();
+
         return view('produit',['produits'=>$produits,'layout'=>'create']);
     }
 
@@ -38,8 +39,8 @@ class ProduitController extends Controller
      */
     public function store(Request $request)
     {
-        $cpt=Produit::all()->count();
 
+        $cpt=Produit::all()->count();
         $produit=new Produit();
         $produit->codeProd="P000".($cpt+1);
         $produit->designation=$request->input('designation');
@@ -48,7 +49,7 @@ class ProduitController extends Controller
         $produit->prix=$request->input('prix');
 
         $produit->save();
-        return redirect('/');
+        return redirect('/create');
     }
 
     /**

@@ -20,7 +20,6 @@ class CreateProduitsTable extends Migration
             $table->string('description');
             $table->integer('etat');
             $table->double('prix');
-            $table->timestamps();
         });
     }
 

@@ -16,7 +16,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/','App\Http\Controllers\ProduitController@index');
+Route::get('/index','App\Http\Controllers\ProduitController@index');
 Route::get('/edit/{id}','App\Http\Controllers\ProduitController@edit');
 Route::get('/show/{id}','App\Http\Controllers\ProduitController@show');
 Route::get('/create','App\Http\Controllers\ProduitController@create');

@@ -1,5 +1,6 @@
 <div class="col">
     <form action="{{ url('/store') }}" method="post">
+        @csrf
         <div class="mb-3">
             <label class="form-label">Designation</label>
             <input type="text" class="form-control" name="designation" placeholder="la designation du produit">
