@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','App\Http\Controllers\ProduitController@show');
 Route::get('/index','App\Http\Controllers\ProduitController@index');
 Route::get('/edit/{id}','App\Http\Controllers\ProduitController@edit');
+Route::get('/delete/{id}','App\Http\Controllers\ProduitController@destroy');
 Route::get('/create','App\Http\Controllers\ProduitController@create');
 Route::post('/store','App\Http\Controllers\ProduitController@store');
 Route::post('/update/{id}','App\Http\Controllers\ProduitController@update');

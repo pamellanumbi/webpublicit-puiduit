@@ -22,7 +22,7 @@
             <td>{{ $p->prix }}</td>
             <td>
                 <a href="{{ url('/edit/'.$p->id) }}" class="btn btn-sm btn-warning">Modifier</a>
-                <a href="#" class="btn btn-sm btn-danger">Supprimer</a>
+                <a href="{{ url('/delete/'.$p->id) }}" class="btn btn-sm btn-danger">Supprimer</a>
             </td>
         </tr>
         @endforeach

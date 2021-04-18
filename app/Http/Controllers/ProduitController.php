@@ -46,9 +46,8 @@ class ProduitController extends Controller
             $chemin=public_path('/images');
             $images->move($chemin,$nomImage);
         }
-        $cpt=Produit::all()->count();
         $produit=new Produit();
-        $produit->codeProd="P000".($cpt+1);
+        $produit->codeProd="P".time();
         $produit->designation=$request->input('designation');
         $produit->description=$request->input('description');
         $produit->etat=1;
@@ -124,6 +123,6 @@ class ProduitController extends Controller
     {
         $produit=Produit::find($id);
         $produit->delete();
-        return redirect('/');
+        return redirect('/index');
     }
 }
